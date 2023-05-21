@@ -19,11 +19,12 @@ html {
 *,
 *:before,
 *:after {
+    margin: 0;
+    padding: 0;
     box-sizing: inherit;
 }
 
 body {
-    margin: 0;
     overflow-x: hidden;
 }
 
@@ -34,40 +35,137 @@ img {
 
 /* ********* Calculator CSS ********* */
 
-.calc-btns {
-    width: fit-content;
+.dark-mode {
+    background-color: var(--second-color);
+    color: #fff;
+}
+header {
+    padding: 30px 0;
+    background-color: var(--main-color);
+    .title {
+        text-align: center;
+        color: #000;
+        text-transform: uppercase;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+            sans-serif;
+    }
+    .dark-theme-btn {
+        position: fixed;
+        z-index: 999;
+        bottom: 1vh;
+        right: 1vw;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: var(--main-color);
+        color: var(--second-color);
+        cursor: pointer;
+        outline: 0;
+        border: 0;
+        transition: all 0.3s ease-out;
+    }
+    .dark-theme-btn:hover {
+        background-color: var(--second-color);
+        color: var(--main-color);
+    }
+}
+
+main {
+    position: absolute;
+    width: 100%;
+    height: 89%;
     display: grid;
-    justify-items: center;
-    gap: 10px;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-
-    .btn {
-        width: 50px;
-        height: 50px;
+    place-content: center;
+    .calculator {
+        position: relative;
+        width: fit-content;
+        height: fit-content;
+        margin: 0 auto 100px;
+        padding: 40px 20px;
+        border-radius: 12px;
+        display: grid;
+        place-content: center;
+        background-color: #192986;
+        .calc-model {
+            font-size: 12px;
+            color: #fff;
+            position: absolute;
+            text-align: end;
+            right: 12px;
+            top: 12px;
+        }
+        .calc-display {
+            height: 120px;
+            background-color: #fff;
+            color: #222;
+            font-size: 32px;
+            text-align: end;
+            padding: 10px;
+            border: solid 1px #222;
+            border-radius: 4px;
+            margin: 10px 0 25px;
+        }
     }
+    .calc-btns {
+        width: fit-content;
+        display: grid;
+        justify-items: center;
+        gap: 15px;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(4, 1fr);
 
-    .btn:nth-child(4),
-    .btn:nth-child(5),
-    .btn:nth-child(6) {
-        grid-area: 2;
-    }
+        .btn {
+            display: grid;
+            place-content: center;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            background-color: #fff;
+            color: #222;
+            border: none;
+            border-radius: 50%;
+            transition: all 0.02s ease;
+            box-shadow: 3px 3px 4px #222;
+        }
+        .btn:hover {
+            cursor: pointer;
+            scale: 0.95;
+            background-color: #e6e6e6;
+        }
+        .btn:active {
+            scale: 0.9;
+            background-color: #d2d2d2;
+            box-shadow: none;
+        }
 
-    .btn:nth-child(7),
-    .btn:nth-child(8),
-    .btn:nth-child(9) {
-        grid-area: 3;
-    }
+        .btn:nth-child(4),
+        .btn:nth-child(5),
+        .btn:nth-child(6) {
+            grid-area: 2;
+        }
 
-    .btn:nth-child(10) {
-        grid-area: 4 / 2;
-    }
+        .btn:nth-child(7),
+        .btn:nth-child(8),
+        .btn:nth-child(9) {
+            grid-area: 3;
+        }
 
-    .btn:nth-child(11) {
-        grid-area: 4 / 3;
-    }
+        .btn:nth-child(10) {
+            grid-area: 4 / 2;
+        }
 
-    .btn:nth-child(12) {
-        grid-area: 3 / 5 / span 2 / span 1;
+        .btn:nth-child(11) {
+            grid-area: 4 / 3;
+        }
+
+        .btn:nth-child(12) {
+            grid-area: 3 / 5 / span 2 / span 1;
+            height: 100%;
+            border-radius: 6px;
+        }
     }
 }
