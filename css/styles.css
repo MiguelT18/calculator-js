@@ -1,0 +1,67 @@
+/* ********* Reset CSS ********* */
+:root {
+  --main-font: sans-serif;
+  --font-size: 16px;
+  --main-color: #f7df1e;
+  --second-color: #222;
+  --main-modal-color: rgba(247, 222, 30, 0.85);
+  --second-modal-color: rgba(34, 34, 34, 0.85);
+  --container-width: 1200px;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: var(--main-font);
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ********* Calculator CSS ********* */
+.calc-btns {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+.calc-btns .btn {
+  width: 50px;
+  height: 50px;
+}
+.calc-btns .btn:nth-child(4),
+.calc-btns .btn:nth-child(5),
+.calc-btns .btn:nth-child(6) {
+  grid-area: 2;
+}
+.calc-btns .btn:nth-child(7),
+.calc-btns .btn:nth-child(8),
+.calc-btns .btn:nth-child(9) {
+  grid-area: 3;
+}
+.calc-btns .btn:nth-child(10) {
+  grid-area: 4/2;
+}
+.calc-btns .btn:nth-child(11) {
+  grid-area: 4/3;
+}
+.calc-btns .btn:nth-child(12) {
+  grid-area: 3/5/span 2/span 1;
+}/*# sourceMappingURL=styles.css.map */
