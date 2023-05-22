@@ -17,7 +17,6 @@ export default function calculator(options) {
     let operand = [];
     numbersBtn.forEach((btn) =>
         btn.addEventListener("click", () => {
-            // btn.textContent;
             operand.push(btn.textContent);
             console.log(operand.join(""));
         })
