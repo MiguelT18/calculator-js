@@ -13,7 +13,7 @@
 html {
     box-sizing: border-box;
     font-family: var(--main-font);
-    font-size: var(--font-size);
+    font-size: 62.5%;
     scroll-behavior: smooth;
 }
 *,
@@ -40,25 +40,31 @@ img {
     color: #fff;
 }
 header {
+    height: 10vh;
+    display: grid;
+    align-content: center;
     padding: 30px 0;
     background-color: var(--main-color);
     .title {
         text-align: center;
         color: #000;
         text-transform: uppercase;
+        font-size: clamp(1.2rem, 6vw, 2.5rem);
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
             Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
             sans-serif;
     }
     .dark-theme-btn {
+        width: clamp(6rem, 16vw, 7rem);
+        height: clamp(6rem, 16vw, 7rem);
+        font-size: clamp(3rem, 8.5vw, 4rem);
+        padding-top: 4px;
+        text-align: center;
         position: fixed;
         z-index: 999;
-        bottom: 1vh;
-        right: 1vw;
-        width: 4rem;
-        height: 4rem;
+        bottom: 0.8vh;
+        right: 2vw;
         border-radius: 50%;
-        font-size: 2rem;
         font-weight: bold;
         background-color: var(--main-color);
         color: var(--second-color);
@@ -71,18 +77,18 @@ header {
         background-color: var(--second-color);
         color: var(--main-color);
     }
+    .dark-theme-btn:active {
+        animation: iconRotate 0.1s linear;
+    }
 }
 
 main {
-    width: 100%;
-    height: 80vh;
+    height: 76vh;
     display: grid;
     place-content: center;
     .calculator {
         position: relative;
-        width: fit-content;
-        height: fit-content;
-        margin: 0 auto 100px;
+        margin: 0 auto;
         padding: 40px 20px;
         border-radius: 12px;
         display: grid;
@@ -97,7 +103,6 @@ main {
             top: 12px;
         }
         .calc-display {
-            height: 120px;
             background-color: #fff;
             color: #222;
             font-size: 32px;
@@ -109,18 +114,18 @@ main {
         }
     }
     .calc-btns {
-        width: fit-content;
+        width: 100%;
+        gap: 10px;
         display: grid;
         justify-items: center;
-        gap: 15px;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(4, 1fr);
 
         .btn {
             display: grid;
             place-content: center;
-            width: 50px;
-            height: 50px;
+            width: clamp(3rem, 13vw, 5rem);
+            height: clamp(3rem, 13vw, 5rem);
             font-size: 24px;
             font-weight: bold;
             background-color: #fff;
@@ -171,19 +176,33 @@ main {
 
 footer {
     display: flex;
-    height: 10vh;
-    justify-content: center;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    span {
+        font-size: 1.4rem;
+        text-align: center;
+    }
     img {
         width: 60px;
         height: 60px;
         cursor: pointer;
     }
-    .github-icon {
-        transition: all 0.5s ease;
+    img:hover {
+        scale: 1.1;
+        animation: iconRotate 1s linear infinite;
     }
-    .github-icon:active {
-        transform: rotate(50deg);
+    img:active {
+        scale: 0.9;
+        animation: none;
+    }
+    @keyframes iconRotate {
+        from {
+            transform: rotateY(0deg);
+        }
+        to {
+            transform: rotateY(360deg);
+        }
     }
 }

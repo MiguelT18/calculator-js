@@ -33,11 +33,21 @@ export default function calculator({
         })
     );
     // Escribir con el teclado
+    function isSpecialKey(key) {
+        return (
+            key === "Tab" ||
+            key === "Shift" ||
+            key === "Control" ||
+            key === "Alt" ||
+            false
+        );
+    }
+
     d.addEventListener("keydown", (e) => {
         if ($display.textContent == "0") {
             $display.textContent = e.key;
         } else {
-            if (!isNaN(e.key)) {
+            if (!isNaN(e.key) && e.key.length === 1 && !isSpecialKey(e.key)) {
                 $display.textContent += e.key;
             }
         }

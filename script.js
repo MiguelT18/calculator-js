@@ -14,4 +14,4 @@ d.addEventListener("DOMContentLoaded", (e) => {
 });
 
 // Modo Nocturno
-darkTheme(".dark-theme-btn", "dark-mode");
+darkTheme(".dark-theme-btn", "dark-mode", "github-icon");
