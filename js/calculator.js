@@ -1,25 +1,51 @@
 const d = document;
 
-export default function calculator(options) {
-    const { pointBtn, equalsBtn, deleteBtn, clearBtn, display } = options;
-
+export default function calculator({
+    pointButton,
+    equalsButton,
+    deleteButton,
+    clearButton,
+    display,
+}) {
     // Special Buttons
-    const $pointBtn = d.getElementById(pointBtn),
-        $equalsBtn = d.getElementById(equalsBtn),
-        $deleteBtn = d.getElementById(deleteBtn),
-        $clearBtn = d.getElementById(clearBtn),
+    const $pointBtn = d.getElementById(pointButton),
+        $equalsBtn = d.getElementById(equalsButton),
+        $deleteBtn = d.getElementById(deleteButton),
+        $clearBtn = d.getElementById(clearButton),
         $display = d.getElementById(display);
 
     // Data Atributes
-    const numbersBtn = d.querySelectorAll("[data-number]"),
-        operators = d.querySelectorAll("[data-operator]");
+    const $numberButtons = d.querySelectorAll("[data-number]");
+    const $operatorButtons = d.querySelectorAll("[data-operator]");
 
-    let operand = [];
-    numbersBtn.forEach((btn) =>
-        btn.addEventListener("click", () => {
-            // btn.textContent;
-            operand.push(btn.textContent);
-            console.log(operand.join(""));
+    // Escribir un 0 si no existe ningún valor en $display
+    $display.textContent == "" ? ($display.textContent = "0") : null;
+
+    //? EVENTOS
+
+    // Escribir con los botones
+    $numberButtons.forEach((btn) =>
+        btn.addEventListener("click", (e) => {
+            if ($display.textContent == "0") {
+                $display.textContent = "";
+            }
+            $display.textContent += btn.textContent;
         })
     );
+    // Escribir con el teclado
+    d.addEventListener("keydown", (e) => {
+        if ($display.textContent == "0") {
+            $display.textContent = e.key;
+        } else {
+            if (!isNaN(e.key)) {
+                $display.textContent += e.key;
+            }
+        }
+    });
+
+    // Funciones aritméticas
+    const add = (a, b) => a + b;
+    const substract = (a, b) => a - b;
+    const multiply = (a, b) => a * b;
+    const divide = (a, b) => a / b;
 }

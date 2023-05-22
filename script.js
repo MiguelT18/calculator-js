@@ -5,10 +5,10 @@ const d = document;
 
 d.addEventListener("DOMContentLoaded", (e) => {
     calculator({
-        pointBtn: "point-btn",
-        equalsBtn: "equals-btn",
-        deleteBtn: "delete-btn",
-        clearBtn: "clear-btn",
+        pointButton: "point-btn",
+        equalsButton: "equals-btn",
+        deleteButton: "delete-btn",
+        clearButton: "clear-btn",
         display: "display",
     });
 });
